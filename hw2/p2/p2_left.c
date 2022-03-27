@@ -7,9 +7,6 @@ void main(){
     //assume that |x - y| <= 2
     __CPROVER_assume(x >= y - 2 && x <= y + 2);
     
-    //initialize i = 0
-    i = 0;
-
     //unwinding for depth 2 using the first way
     if (i <= 10){
         if (x < y){

@@ -39,6 +39,15 @@
     )
 )
 
+; Defining the property to be checked 
+; Namely, that p = 5 implies x = y
+(define-fun P ((p Int) (x Int) (y Int) (i Int)) Bool 
+    (=> 
+        (= p 5)
+        (= x y)
+    )
+)
+
 ; A 3-long race will have 4*3 = 12 variables.
 ; <p0, x0, y0, i0> -> <p1, x1, y1, i1> -> <p2, x2, y2, i2>
 
@@ -56,17 +65,21 @@
 (declare-fun y2 () Int)
 (declare-fun i2 () Int)
 
-; Ensuring the initial condition 
-(assert (init p0 x0 y0 i0))
+; Now, the verification formula for a 3 long race will be the following. 
+;   (init p0 x0 y0 i0) AND 
+;   (tran p0 x0 y0 i0 p1 x1 y1 i1) AND 
+;   (tran p1 x1 y1 i1 p2 x2 y2 i2) AND 
+;   (not (P p2 x2 y2 i2))
+; To prove the property, it is enough to check that the above formula is UNSAT
 
-; Ensuring that these variables form valid transitions 
-(assert (and 
-    (tran p0 x0 y0 i0 p1 x1 y1 i1)
-    (tran p1 x1 y1 i1 p2 x2 y2 i2)
-))
-
-; Checking the property 
-(assert (= x2 y2))
+(assert 
+    (and 
+        (init p0 x0 y0 i0)
+        (tran p0 x0 y0 i0 p1 x1 y1 i1)
+        (tran p1 x1 y1 i1 p2 x2 y2 i2)
+        (not (P p2 x2 y2 i2))
+    )
+)
 
 (check-sat)
 (get-model)

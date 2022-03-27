@@ -7,8 +7,6 @@ void main(){
     //assume that |x - y| <= 2
     __CPROVER_assume(x >= y - 2 && x <= y + 2);
     
-    //initialize i = 0
-    i = 0;
     while(i <= 10){
         if (x < y)
             x = x + 1;
@@ -17,5 +15,5 @@ void main(){
         i++;
     } 
     
-    assert(x == y);
+   __CPROVER_assert(x == y, "x == y");
 }
