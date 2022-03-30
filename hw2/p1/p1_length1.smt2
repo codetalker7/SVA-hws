@@ -48,36 +48,24 @@
     )
 )
 
-; A 3-long race will have 4*3 = 12 variables.
-; <p0, x0, y0, i0> -> <p1, x1, y1, i1> -> <p2, x2, y2, i2>
+; A 1-long race will have 4 variables.
+; <p0, x0, y0, i0>
 
-; Declaring all the 12 variables 
+; Declaring all the 4 variables 
 (declare-fun p0 () Int)
 (declare-fun x0 () Int)
 (declare-fun y0 () Int)
 (declare-fun i0 () Int)
-(declare-fun p1 () Int)
-(declare-fun x1 () Int)
-(declare-fun y1 () Int)
-(declare-fun i1 () Int)
-(declare-fun p2 () Int)
-(declare-fun x2 () Int)
-(declare-fun y2 () Int)
-(declare-fun i2 () Int)
 
-; Now, the verification formula for a 3 long race will be the following. 
+; Now, the verification formula for a 1 long race will be the following. 
 ;   (init p0 x0 y0 i0) AND 
-;   (tran p0 x0 y0 i0 p1 x1 y1 i1) AND 
-;   (tran p1 x1 y1 i1 p2 x2 y2 i2) AND 
-;   (not (P p2 x2 y2 i2))
+;   (not (P p0 x0 y0 i0))
 ; To prove the property, it is enough to check that the above formula is UNSAT
 
 (assert 
     (and 
         (init p0 x0 y0 i0)
-        (tran p0 x0 y0 i0 p1 x1 y1 i1)
-        (tran p1 x1 y1 i1 p2 x2 y2 i2)
-        (not (P p2 x2 y2 i2))
+        (not (P p0 x0 y0 i0))
     )
 )
 
