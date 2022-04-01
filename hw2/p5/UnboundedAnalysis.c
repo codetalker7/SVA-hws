@@ -34,8 +34,10 @@ int main(){
   */
   
   //Reassinging x and cnt as only they are changed in the program
-  x = nondet_uint();
   cnt = nondet_uint();
+  x = nondet_uint();
+  i = nondet_uint();
+  savex = nondet_uint();  
 
   //assume the LI
   __CPROVER_assume(savex != (1 << i) || (cnt <= 1) && ((cnt == 1) == (x == 0)));
@@ -49,18 +51,20 @@ int main(){
   */
   
   //Reassiging x and cnt as only they are changed in the program
-  x = nondet_uint();
   cnt = nondet_uint();
+  x = nondet_uint();
+  i = nondet_uint();
+  savex = nondet_uint();  
 
   //Assuming LI and LC
   __CPROVER_assume(x != 0);   //LC
-  __CPROVER_assume(savex != (1 << i) || ((savex % x == 0 || x == 0) && (cnt <= 1 && ((cnt == 1) == (x == 0)))));  //Strengthened LI
+  __CPROVER_assume(savex != (1 << i) || (((savex % x == 0 && x <= savex) || x == 0) && (cnt <= 1 && ((cnt == 1) == (x == 0)))));  //Strengthened LI
 
   //Loop body
   if (x&1) cnt++;
   x >>= 1;
 
   //Asserting the strengthened LI again
-  __CPROVER_assert(savex != (1 << i) || ((savex % x == 0 || x == 0) && (cnt <= 1 && ((cnt == 1) == (x == 0)))), "Inductive Check");
+  __CPROVER_assert(savex != (1 << i) || (((savex % x == 0 && x <= savex) || x == 0) && (cnt <= 1 && ((cnt == 1) == (x == 0)))), "Inductive Check");
  
 }

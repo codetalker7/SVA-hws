@@ -8,7 +8,7 @@ We will also assume in this problem that all bit vectors have length $5$; if $x$
 
 In this problem, we will construct a transition system $TS = (\text{Init}, T)$ for the program over the domain $S = \text{BitVectors}\times\text{BitVectors}\times\mathbb{N}$, where $\text{BitVectors}$ is the set of bit vectors. A state will be interpreted as the tuple $\langle savex, x, cnt\rangle$.
 
-First, for our convenience, we will define a predicate $>>$ which will denote the action of the left shift operator. If $x$ and $x'$ are two bit vectors, then the predicate is defined as follows.
+First, for our convenience, we will define a predicate $>>$ which will denote the action of the right shift operator. If $x$ and $x'$ are two bit vectors, then the predicate is defined as follows.
 
 $$
     \begin{aligned}
@@ -145,7 +145,7 @@ And finally, we will see that
 
 $$\text{IM}^6(savex, x, cnt) = \text{IM}^5\lor (x = 0\land cnt = 1)$$
 
-Note that $\text{IM}^6$ does not include the variable $savex$. Now, note that by our transition system, any state of the form $\langle savex, 0, 1\rangle$ can only reach itself after a single step. So, it follwos that 
+Note that $\text{IM}^6$ does not include the variable $savex$. Now, note that by our transition system, any state of the form $\langle savex, 0, 1\rangle$ can only reach itself after a single step. So, it follows that 
 
 $$\text{IM}^7 = \text{IM}^6$$
 
