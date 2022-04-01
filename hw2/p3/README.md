@@ -12,7 +12,7 @@ With these definitions, we will now answer the following questions.
 1. **What sets of states do the following predicates denote?**
     $$\text{Im}(\langle y_1, y_0\rangle) = (\exists \langle x_1, x_0\rangle)\,\,.\,\,\text{Init}(\langle x_1, x_0\rangle \land T(\langle x_1, x_0\rangle, \langle y_1, y_0\rangle))$$
     *Answer:* Note that $\text{Im}(\langle y_1, y_0\rangle)$ will be true if and only if the state $\langle y_1, y_0\rangle$ is reachable from an initial state in exactly one step. So, the predicate $\text{Im}$ will be satisfied by precisely those states which are reachable from some initial state in exactly one step. Now because the only possible initial states are $\langle 1, 0\rangle$, $\langle 0, 1\rangle$ and $\langle 1, 1\rangle$, it follows that the set represented by $\text{Im}$ is the following. 
-    $$\{\langle 1,0\rangle\}, \langle 0, 1\rangle, \langle 1, 1\rangle\}$$
+    $$\{\langle 1,0\rangle, \langle 0, 1\rangle, \langle 1, 1\rangle\}$$
 
 2. **Consider the following higher-order function on state predicates:**
     $$\text{ImP}(P)(\langle y_1, y_0\rangle) = (\exists \langle x_1, x_0\rangle)\,\,.\,\,P(\langle x_1, x_0\rangle)\land T(\langle x_1, x_0\rangle, \langle y_1, y_0\rangle))$$

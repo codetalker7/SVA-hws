@@ -8,4 +8,9 @@ The formula is composed of three parts: `init`, a predicate for the initial cond
 
 Similarly, we check the verification condition formula for $1$-long and $2$-long races in the other files. 
 
+Running times: 
+- `p1_length1.smt2`: 0.034s
+- `p1_length2.smt2`: 0.034s
+- `p1_length3.smt2`: 0.035s
+
 **Important Note:** that there is *no* transition starting from a state where $PC = 5$; hence, it must be ensured that in any such formula for checking $k$-races, there is no transition starting from the state with $PC = 5$ (otherwise, the formula will *always* be UNSAT, and could give erroneous results). 

@@ -35,7 +35,6 @@
         ) 
         (=> (= p 3) (and (= yn x) (= pn 4))) 
         (=> (= p 4) (and (= in (+ i 1)) (= pn 1))) 
-        (=> (= p 5) (and (= pn p) (= xn x) (= yn y) (= in i))) 
     )
 )
 

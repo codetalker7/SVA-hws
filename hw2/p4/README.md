@@ -29,7 +29,7 @@ So, it follows that $LI_y(y, z)$ is an inductive loop invariant for the given lo
 
 # Questions
 
-**(1) Is $LI(x, z)$ an inductive invariant for the loop at the point of placement of $LI$?**
+**Is $LI(x, z)$ an inductive invariant for the loop at the point of placement of $LI$?**
 
 *Answer:* To check whether $LI(x, z)$ is an inductive loop invariant, we need to check two things, namely that $LI$ holds before the loop execution, and that the LI holds after every iteration of the loop.
 
