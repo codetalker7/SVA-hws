@@ -29,8 +29,10 @@ Now, we will try to encode one such straight-line path in SSA and verify that it
 - $(i_2 = i_1 + 1)$.
 - $!(i_2 \le 10)$. This is the fifth guard, which denotes the loop exit condition.
 
-Let us call the conjunction of all of the above clauses $\phi$. So, $\phi$ represents the SSA formula for this path. Now, the VC for this path will be the following. 
+Let us call the conjunction of all of the above clauses $\phi$. So, $\phi$ represents the SSA formula for this path. Now, the VC for this path will be the following.
+
 $$\phi\implies (x_0 = y_2)$$
+
 So, to prove the program correct, the SAT solver will try to check whether $\text{UNSAT}(\neg(\phi\implies (x_0 = y_2)))$ is true. We have encoded this formula in `p2.smt2`. Indeed, Z3 returns unsat for this file. The running time is 0.032s. 
 
 We can actually check all the paths using a single VC by using *merges* as defined in class.
